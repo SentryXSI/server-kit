@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+#----------------------------------
+#
+# NinjaSentry BattleStation-XS
+#
+#----------------------------------
+# Fedora 30 Server Admin Kit
+#----------------------------------
+# Last update : September 9 2019
+#----------------------------------
+
+set -euxo pipefail
+
+get_cockpit=$(rpm -qa cockpit)
+
+if [[ -z "$get_cockpit" ]]; then
+
+    echo "Installing Cockpit Server"
+
+    sudo dnf install cockpit -y
+
+    echo "Finished Installing"  
+	
+    cockpit-bridge --version
+
+    sudo firewall-cmd --reload
+    sudo firewall-cmd --add-service=cockpit --zone=FedoraServer --permanent
+    sudo firewall-cmd --reload
+	
+else 
+
+    echo "Cockpit is already installed"
+    cockpit-bridge --version
+fi
+
+
