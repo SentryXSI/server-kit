@@ -1,2 +1,10 @@
+.idea/
+.env
+*.iml
+*.swp
+*.tmp
+*.log
 /cache/
 /config/development/
+composer.phar
+vendor/
