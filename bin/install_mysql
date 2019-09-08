@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+#----------------------------------
+#
+# NinjaSentry BattleStation-XS
+#
+#----------------------------------
+# Fedora 30 Server Admin Kit
+#----------------------------------
+# Last update : September 9 2019
+#----------------------------------
+
+set -euxo pipefail
+
+echo "Installing MySQL Module"
+
+sudo dnf module enable mysql:5.7 -y
+sudo dnf module install mysql:5.7/{server,client} -y
+
+echo "Finished Installing"
+
+mysql -V
