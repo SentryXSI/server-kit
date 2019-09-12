@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+#----------------------------------
+#
+# NinjaSentry BattleStation-XS
+#
+#----------------------------------
+# Fedora 30 Server Admin Kit
+#----------------------------------
+
+set -euxo pipefail
+
+BASE_PATH='/var/www/html/ci4/'
+APP_PATH="${BASE_PATH}appstarter/"
+
+# if [[ -n $3 ]]; then 
+#   BASEPATH=$3
+# fi
+
+echo "Installing CodeIgniter 4"
+
+if [[ ! -d "$BASE_PATH" ]]; then 
+
+sudo mkdir "$BASE_PATH"
+sudo chown ninja:apache "$BASE_PATH"
+sudo chmod 2775 "$BASE_PATH"
+
+fi
+
+# dev
+# composer create-project codeigniter4/appstarter "$APP_PATH" -s beta
+
+# no dev
+composer create-project codeigniter4/appstarter "$APP_PATH" -s beta --no-dev
+
+# SELinux policy
+if [[ -d "${APP_PATH}/writable" ]]; then 
+
+sudo semanage fcontext -a -t httpd_sys_rw_content_t "${APP_PATH}writable(/.*)?"
+sudo restorecon -rv "${APP_PATH}"
+
+fi
+
+# Vulcan CLI
+# composer require "lonnieezell/vulcan"
+
+echo "Install finished"
+
+# uninstall
+# sudo rm -dr ci4
+
+
