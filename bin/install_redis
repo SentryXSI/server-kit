@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+#----------------------------------
+#
+# NinjaSentry BattleStation-XS
+#
+#----------------------------------
+# Fedora 30 Server Admin Kit
+#----------------------------------
+
+set -euxo pipefail
+
+sudo dnf in redis -y
+
+sudo firewall-cmd --reload
+sudo firewall-cmd --add-service=redis --zone=FedoraServer --permanent
+sudo firewall-cmd --reload
+
+# auto start service on boot
+# sudo systemctl enable --now redis
+
+# sudo systemctl start redis
+
+echo "Redis installed"
+
+whereis redis
+
+sudo firewall-cmd --info-zone=FedoraServer
