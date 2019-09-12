@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+#----------------------------------
+#
+# NinjaSentry BattleStation-XS
+#
+#----------------------------------
+# Fedora 30 Server Admin Kit
+#----------------------------------
+
+echo "Installing Yarn Repo"
+
+sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
+
+echo "Yarn Repo installed"
+
+sleep 2
+
+echo "Start Installing Yarn"
+
+sudo dnf in -y yarn
+
+echo "Finished installing Yarn"
+
+echo "Version : "
+
+yarn --version

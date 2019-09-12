@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+#
+# Check installed package versions
+#
+
+httpd -v
+
+php --version
+composer --version
+
+git_version=$(git --version | sed -E 's/git/Git/g')
+echo "$git_version"
+
+node_version=$(node --version)
+echo "Node $node_version"
+
+npm_version=$(npm --version)
+echo "Npm $npm_version"
+
+yarn_version=$(yarn --version)
+echo "Yarn $yarn_version"
+
+
