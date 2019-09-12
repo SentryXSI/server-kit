@@ -23,7 +23,7 @@ if [[ -z "$get_cockpit" ]]; then
     sudo firewall-cmd --reload
     sudo firewall-cmd --add-service=cockpit --zone=FedoraServer --permanent
     sudo firewall-cmd --reload
-	sudo firewall-cmd --info-zone=Fedora-Server
+	sudo firewall-cmd --info-zone=FedoraServer
 	
 else 
 
