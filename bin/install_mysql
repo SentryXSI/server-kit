@@ -7,16 +7,18 @@
 #----------------------------------
 # Fedora 30 Server Admin Kit
 #----------------------------------
-# Last update : September 9 2019
-#----------------------------------
 
 set -euxo pipefail
 
-echo "Installing MySQL Module"
+echo "Started Installing MySQL Module"
 
 sudo dnf module enable mysql:5.7 -y
 sudo dnf module install mysql:5.7/{server,client} -y
 
-echo "Finished Installing"
+echo "Finished Installing MySQl Module"
+echo ""
 
 mysql -V
+
+# echo "Start MySQL Secure Install"
+# mysql_secure_installation -y 
