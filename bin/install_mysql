@@ -10,12 +10,12 @@
 
 set -euxo pipefail
 
-echo "Started Installing MySQL Module"
+echo "Installing MySQL Module"
 
 sudo dnf module enable mysql:5.7 -y
 sudo dnf module install mysql:5.7/{server,client} -y
 
-echo "Finished Installing MySQl Module"
+echo "MySQl Module Installed"
 echo ""
 
 mysql -V
