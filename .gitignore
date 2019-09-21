@@ -4,7 +4,8 @@
 *.swp
 *.tmp
 *.log
-/cache/
-/config/development/
 composer.phar
+cache/
+/config/development/
+/config/staging/
 vendor/
