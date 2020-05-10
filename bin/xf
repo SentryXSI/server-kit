@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+
+# ------------------------------------------------------------------------------
+#
+# XenForo Database
+#
+# ------------------------------------------------------------------------------
+# user : xf_admin
+# pass : xf_admin
+# host : xenforo.mint
+# ------------------------------------------------------------------------------
+
+# CREATE USER 'xf_admin'@'xenforo.mint' IDENTIFIED WITH mysql_native_password AS '***';
+# GRANT ALL PRIVILEGES ON *.* TO 'xf_admin'@'xenforo.mint' REQUIRE NONE WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+# CREATE DATABASE IF NOT EXISTS `xf_admin`;
+# GRANT ALL PRIVILEGES ON `xf\_admin`.* TO 'xf_admin'@'xenforo.mint'; 
+
+echo "XenForo | Admin Tools"
+
+BASE_PATH='/var/www/html/xenforo'
+
+# ------------------------------------------------------------------------------
+#
+# Make Directory
+#
+# ------------------------------------------------------------------------------
+#
+# ./xf mkdir
+#
+if [[ -n "$1" && "$1" == 'mkdir' ]]; then
+
+    if [[ -d "$BASE_PATH" ]]; then
+
+        echo 'XenForo directory exists'
+        echo "$BASE_PATH"
+
+    else 
+
+        sudo mkdir "$BASE_PATH"
+        sudo chown ninja:apache "$BASE_PATH"
+        sudo chmod 2775 "$BASE_PATH"
+
+        chmod 775 "$BASE_PATH/data"
+        chmod 775 "$BASE_PATH/internal_data"
+    fi
+
+    exit
+fi
+
+# ------------------------------------------------------------------------------
+#
+# Directory Permissions
+#
+# ------------------------------------------------------------------------------
+#
+# ./xf rwx
+#
+if [[ -n "$1" && "$1" == 'rwx' ]]; then
+
+    sudo chown -R ninja:apache "$BASE_PATH"
+    sudo chmod -R 0775 "$BASE_PATH"
+
+    exit
+fi
+
+# ------------------------------------------------------------------------------
+#
+# SELinux Policy
+#
+# ------------------------------------------------------------------------------
+#
+# ./xf selabels
+#
+if [[ -n "$1" && "$1" == 'selabels' ]]; then
+
+    sudo setsebool -P httpd_can_network_connect 1
+    sudo setsebool -P httpd_can_network_connect_db 1
+
+    # sudo setsebool -P httpd_graceful_shutdown 1
+
+    sudo semanage fcontext -a -t httpd_sys_rw_content_t "$BASE_PATH/data(/.*)?"
+    sudo restorecon -rv "$BASE_PATH/data"
+
+    sudo semanage fcontext -a -t httpd_sys_rw_content_t "$BASE_PATH/internal_data(/.*)?"
+    sudo restorecon -rv "$BASE_PATH/internal_data"
+
+    exit
+fi
+
+
