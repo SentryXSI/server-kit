@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-set -euxo pipefail
-
-echo "testing"
-
-# host=$("hostnamectl")
-# echo "$host"
-
