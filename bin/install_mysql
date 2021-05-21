@@ -5,15 +5,15 @@
 # NinjaSentry BattleStation-XS
 #
 #----------------------------------
-# Fedora 30 Server Admin Kit
+# Fedora Server Admin Kit
 #----------------------------------
 
 set -euxo pipefail
 
 echo "Installing MySQL Module"
 
-sudo dnf module enable mysql:5.7 -y
-sudo dnf module install mysql:5.7/{server,client} -y
+sudo dnf module enable mysql:8.0 -y
+sudo dnf module install mysql:8.0/{server,client} -y
 
 echo "MySQl Module Installed"
 echo ""
