@@ -1,5 +1,4 @@
 # kit
 Fedora server admin kit  
 
-post installation \ configuration tasks  
-
+Installation scripts \ post install \ configuration tasks powered by bash  
