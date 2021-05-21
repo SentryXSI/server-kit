@@ -9,7 +9,7 @@
 # ------------------------------------------------------------------------------
 # https://github.com/SentryXSI/server-kit
 # ------------------------------------------------------------------------------
-# Install httpd, mysql, php, redis, composer, nodejs, yarn
+# Install httpd, mysql, php, redis, composer, nodejs, yarn, lua, go
 # ------------------------------------------------------------------------------
 # ./install_server
 # ------------------------------------------------------------------------------
@@ -20,45 +20,46 @@ set -euxo pipefail
 
 sudo dnf install \
     logrotate \
-	httpd \
+    httpd \
     httpd-devel \
     httpd-manual \
     httpd-tools \
-	pcre-devel \
+    pcre-devel \
     mod_security \
     mod_ssl \
-	mod_http2 \
-	libsodium \
+    mod_http2 \
+    libsodium \
     php-cli \
     php-common \
     php-devel \
-	php-bcmath \
-	php-fpm \
-	php-gmp \
+    php-bcmath \
+    php-fpm \
+    php-gmp \
     php-gd \
     php-intl \
     php-json \
     php-manual-en \
-	php-mbstring \
-	php-mcrypt \
-	php-mysqlnd \
+    php-mbstring \
+    php-mcrypt \
+    php-mysqlnd \
     php-opcache \
     php-pdo \
     php-sodium \
     php-xml \
     gd \
-	redis \
+    redis \
     composer \
     hstr \
-	tmux \
+    tmux \
     z
 
 # TODO :: Move PHP packages to separate script
 # . /install_php
 
-# maxmind GeoIPv2
+# MaxMind GeoIPv2
 # . /install_geoip
 
+# phpMyAdmin
 # sudo dnf install phpMyAdmin -y
 
 # MySQL
@@ -90,6 +91,6 @@ sudo dnf install \
 # Lua
 # sudo df install lua lua-devel luarocks lua-socket lua-sec
 
-# Install Go
+# Go
 # ./install_go
 # sudo dnf install golang -y
