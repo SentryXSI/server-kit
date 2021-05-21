@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+# ------------------------------------------------------------------------------
+# Fedora Server Kit
+# ------------------------------------------------------------------------------
+# https://github.com/SentryXSI/server-kit
+# ------------------------------------------------------------------------------
+# Install Config Server Firewall
+# https://download.configserver.com/csf/install.txt
+# ------------------------------------------------------------------------------
+# set -euxo pipefail
+# ------------------------------------------------------------------------------
+# ** - CSF installer should be run as root user
+# ------------------------------------------------------------------------------
+
+echo 'Installing Config Server Firewall'
+
+sudo dnf install \
+    perl-libwww-perl \
+    perl-GDGraph \
+	perl-Math-BigInt \
+    perl-LWP-Protocol-https \
+	perl-Authen-PAM
+
+cd /tmp
+
+# todo check :: delete existing csf.tgz archive
+
+wget https://download.configserver.com/csf.tgz
+tar -xzf csf.tgz
+cd csf
+
+sudo sh install.sh
+
+sleep 1
+
+# run CSF test script
+perl /usr/local/csf/bin/csftest.pl
+
+# uninstall 
+# cd /etc/csf
+# sh uninstall.sh 
+
+# allow local ip
+# csf -a 192.168.198.1
+
+# start
+# csf -s
+
+# reload 
+# csf -r
