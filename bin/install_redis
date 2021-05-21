@@ -5,7 +5,7 @@
 # NinjaSentry BattleStation-XS
 #
 #----------------------------------
-# Fedora 30 Server Admin Kit
+# Fedora Server Admin Kit
 #----------------------------------
 
 set -euxo pipefail
