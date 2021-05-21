@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# ------------------------------------------------------------------------------
+# Fedora Server Kit
+# ------------------------------------------------------------------------------
+# Install powerline package + extras
+# https://github.com/SentryXSI/server-kit
+# ------------------------------------------------------------------------------
+# https://github.com/powerline/powerline
+# ------------------------------------------------------------------------------
+# ./install_powerline
+# ------------------------------------------------------------------------------
+
+set -euxo pipefail
+
+# echo 'Installing powerline'
+
+sudo dnf install powerline \
+    powerline-docs \
+    powerline-fonts \
+    tmux-powerline \
+    vim-powerline
