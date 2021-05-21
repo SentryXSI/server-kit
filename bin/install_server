@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+
+# ------------------------------------------------------------------------------
+#
+# Fedora Server Kit
+#
+# ------------------------------------------------------------------------------
+# Install web server / web development environment
+# ------------------------------------------------------------------------------
+# https://github.com/SentryXSI/server-kit
+# ------------------------------------------------------------------------------
+# Install httpd, mysql, php, redis, composer, nodejs, yarn
+# ------------------------------------------------------------------------------
+# ./install_server
+# ------------------------------------------------------------------------------
+
+set -euxo pipefail
+
+# echo 'Installing Web Server Environment'
+
+sudo dnf install \
+    logrotate \
+	httpd \
+    httpd-devel \
+    httpd-manual \
+    httpd-tools \
+	pcre-devel \
+    mod_security \
+    mod_ssl \
+	mod_http2 \
+	libsodium \
+    php-cli \
+    php-common \
+    php-devel \
+	php-bcmath \
+	php-fpm \
+	php-gmp \
+    php-gd \
+    php-intl \
+    php-json \
+    php-manual-en \
+	php-mbstring \
+	php-mcrypt \
+	php-mysqlnd \
+    php-opcache \
+    php-pdo \
+    php-sodium \
+    php-xml \
+    gd \
+	redis \
+    composer \
+    hstr \
+	tmux \
+    z
+
+# TODO :: Move PHP packages to separate script
+# . /install_php
+
+# maxmind GeoIPv2
+# . /install_geoip
+
+# sudo dnf install phpMyAdmin -y
+
+# MySQL
+# sudo dnf module list mysql
+# . /install_mysql
+# sudo dnf module reset mysql
+# sudo dnf module enable mysql:8.0
+# sudo dnf module install mysql:8.0/{server,client}
+	
+# NodeJS Module
+# https://nodejs.org/en/
+# . /install_nodejs
+# sudo dnf module reset nodejs
+# sudo module enable nodejs:14
+# sudo module install nodejs:14
+
+# NodeJS RPM package
+# sudo dnf install nodejs
+
+# Yarn
+# https://github.com/yarnpkg/yarn
+# Yarn 2
+# https://dev.to/arcanis/introducing-yarn-2-4eh1
+# https://github.com/yarnpkg/yarn/issues/6953
+# . /install_yarn
+# sudo dnf info yarnpkg
+# sudo dnf install yarnpkg
+
+# Lua
+# sudo df install lua lua-devel luarocks lua-socket lua-sec
+
