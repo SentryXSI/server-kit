@@ -90,3 +90,6 @@ sudo dnf install \
 # Lua
 # sudo df install lua lua-devel luarocks lua-socket lua-sec
 
+# Install Go
+# ./install_go
+# sudo dnf install golang -y
