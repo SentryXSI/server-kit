@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# ------------------------------------------------------------------------------
+# Fedora Server Kit
+# ------------------------------------------------------------------------------
+# Install Network Tools
+# https://github.com/SentryXSI/server-kit
+# ------------------------------------------------------------------------------
+# ./install_nettools
+# ------------------------------------------------------------------------------
+
+set -euxo pipefail
+
+# echo 'Installing Network Tools'
+
+# sudo dnf install net-tools
+# sudo dnf install iptstate
+sudo dnf install htop iftop iptraf-ng
