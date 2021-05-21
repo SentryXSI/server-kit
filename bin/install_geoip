@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# ------------------------------------------------------------------------------
+# Fedora Server Kit
+# ------------------------------------------------------------------------------
+# https://github.com/SentryXSI/server-kit
+# ------------------------------------------------------------------------------
+# php-maxmind-db-reader ( php repo )
+# php-maxminddb ( c extension )
+# geolite2-asn.noarch : Free IP geolocation ASN database
+# geolite2-city.noarch : Free IP geolocation city database
+# geolite2-country.noarch : Free IP geolocation country database
+# ------------------------------------------------------------------------------
+
+set -euxo pipefail
+
+# echo 'Installing maxmind repo'
+
+sudo dnf install \
+    php-maxmind-db-reader \
+    php-maxminddb \
+    geolite2-asn
